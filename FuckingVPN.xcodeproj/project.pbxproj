@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F2962AB068D8DBA68D30D68 /* Pods_FuckingVPN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FEE4729E6F0FC49119A35F /* Pods_FuckingVPN.framework */; };
 		26C6FC962A8E5F0800BEA73A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FC952A8E5F0800BEA73A /* AppDelegate.swift */; };
 		26C6FC982A8E5F0800BEA73A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FC972A8E5F0800BEA73A /* SceneDelegate.swift */; };
 		26C6FC9A2A8E5F0800BEA73A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FC992A8E5F0800BEA73A /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 		26C6FCB12A8E5F4A00BEA73A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C6FCB02A8E5F4A00BEA73A /* NetworkExtension.framework */; };
 		26C6FCB42A8E5F4A00BEA73A /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FCB32A8E5F4A00BEA73A /* PacketTunnelProvider.swift */; };
 		26C6FCB92A8E5F4A00BEA73A /* FuckingNE.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 26C6FCAE2A8E5F4A00BEA73A /* FuckingNE.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4D09C2AAC8162E0A90E15C84 /* Pods_FuckingNE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DA5C9E10B8761AC10F594AC /* Pods_FuckingNE.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09FEE4729E6F0FC49119A35F /* Pods_FuckingVPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuckingVPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C6FC922A8E5F0800BEA73A /* FuckingVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckingVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C6FC952A8E5F0800BEA73A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C6FC972A8E5F0800BEA73A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +60,11 @@
 		26C6FCB32A8E5F4A00BEA73A /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		26C6FCB52A8E5F4A00BEA73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26C6FCB62A8E5F4A00BEA73A /* FuckingNE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckingNE.entitlements; sourceTree = "<group>"; };
+		2DA5C9E10B8761AC10F594AC /* Pods_FuckingNE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuckingNE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5581BA445CEB3AD574DB72E4 /* Pods-FuckingVPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckingVPN.release.xcconfig"; path = "Target Support Files/Pods-FuckingVPN/Pods-FuckingVPN.release.xcconfig"; sourceTree = "<group>"; };
+		8A4ED4C889DF2B9D275761FA /* Pods-FuckingNE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckingNE.debug.xcconfig"; path = "Target Support Files/Pods-FuckingNE/Pods-FuckingNE.debug.xcconfig"; sourceTree = "<group>"; };
+		8C3D568365A18E860E61D232 /* Pods-FuckingVPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckingVPN.debug.xcconfig"; path = "Target Support Files/Pods-FuckingVPN/Pods-FuckingVPN.debug.xcconfig"; sourceTree = "<group>"; };
+		C3BA4406F2DC48FE2379EB2E /* Pods-FuckingNE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FuckingNE.release.xcconfig"; path = "Target Support Files/Pods-FuckingNE/Pods-FuckingNE.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F2962AB068D8DBA68D30D68 /* Pods_FuckingVPN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26C6FCB12A8E5F4A00BEA73A /* NetworkExtension.framework in Frameworks */,
+				4D09C2AAC8162E0A90E15C84 /* Pods_FuckingNE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +95,7 @@
 				26C6FCB22A8E5F4A00BEA73A /* FuckingNE */,
 				26C6FCAF2A8E5F4A00BEA73A /* Frameworks */,
 				26C6FC932A8E5F0800BEA73A /* Products */,
+				B82A3D04BA2647548C03A7F9 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				26C6FCB02A8E5F4A00BEA73A /* NetworkExtension.framework */,
+				2DA5C9E10B8761AC10F594AC /* Pods_FuckingNE.framework */,
+				09FEE4729E6F0FC49119A35F /* Pods_FuckingVPN.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -130,6 +143,18 @@
 			path = FuckingNE;
 			sourceTree = "<group>";
 		};
+		B82A3D04BA2647548C03A7F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8A4ED4C889DF2B9D275761FA /* Pods-FuckingNE.debug.xcconfig */,
+				C3BA4406F2DC48FE2379EB2E /* Pods-FuckingNE.release.xcconfig */,
+				8C3D568365A18E860E61D232 /* Pods-FuckingVPN.debug.xcconfig */,
+				5581BA445CEB3AD574DB72E4 /* Pods-FuckingVPN.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,10 +162,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26C6FCA62A8E5F0900BEA73A /* Build configuration list for PBXNativeTarget "FuckingVPN" */;
 			buildPhases = (
+				4708F04C0D0506A1ED5E2974 /* [CP] Check Pods Manifest.lock */,
 				26C6FC8E2A8E5F0800BEA73A /* Sources */,
 				26C6FC8F2A8E5F0800BEA73A /* Frameworks */,
 				26C6FC902A8E5F0800BEA73A /* Resources */,
 				26C6FCBD2A8E5F4A00BEA73A /* Embed Foundation Extensions */,
+				0A6399E86A7BCA47B6D250DD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -156,6 +183,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26C6FCBA2A8E5F4A00BEA73A /* Build configuration list for PBXNativeTarget "FuckingNE" */;
 			buildPhases = (
+				FA40F01B7D2ED5697260BE87 /* [CP] Check Pods Manifest.lock */,
 				26C6FCAA2A8E5F4A00BEA73A /* Sources */,
 				26C6FCAB2A8E5F4A00BEA73A /* Frameworks */,
 				26C6FCAC2A8E5F4A00BEA73A /* Resources */,
@@ -188,7 +216,7 @@
 				};
 			};
 			buildConfigurationList = 26C6FC8D2A8E5F0800BEA73A /* Build configuration list for PBXProject "FuckingVPN" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -225,6 +253,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A6399E86A7BCA47B6D250DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuckingVPN/Pods-FuckingVPN-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FuckingVPN/Pods-FuckingVPN-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FuckingVPN/Pods-FuckingVPN-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4708F04C0D0506A1ED5E2974 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FuckingVPN-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA40F01B7D2ED5697260BE87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FuckingNE-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26C6FC8E2A8E5F0800BEA73A /* Sources */ = {
@@ -391,6 +483,7 @@
 		};
 		26C6FCA72A8E5F0900BEA73A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C3D568365A18E860E61D232 /* Pods-FuckingVPN.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -424,6 +517,7 @@
 		};
 		26C6FCA82A8E5F0900BEA73A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5581BA445CEB3AD574DB72E4 /* Pods-FuckingVPN.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -457,6 +551,7 @@
 		};
 		26C6FCBB2A8E5F4A00BEA73A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A4ED4C889DF2B9D275761FA /* Pods-FuckingNE.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FuckingNE/FuckingNE.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -483,6 +578,7 @@
 		};
 		26C6FCBC2A8E5F4A00BEA73A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3BA4406F2DC48FE2379EB2E /* Pods-FuckingNE.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = FuckingNE/FuckingNE.entitlements;
 				CODE_SIGN_STYLE = Automatic;

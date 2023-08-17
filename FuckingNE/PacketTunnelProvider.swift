@@ -6,6 +6,7 @@
 //
 
 import NetworkExtension
+import OpenVPNAdapter
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
 
