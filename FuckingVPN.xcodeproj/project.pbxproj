@@ -13,7 +13,34 @@
 		26C6FC9D2A8E5F0800BEA73A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C6FC9B2A8E5F0800BEA73A /* Main.storyboard */; };
 		26C6FC9F2A8E5F0900BEA73A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26C6FC9E2A8E5F0900BEA73A /* Assets.xcassets */; };
 		26C6FCA22A8E5F0900BEA73A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26C6FCA02A8E5F0900BEA73A /* LaunchScreen.storyboard */; };
+		26C6FCB12A8E5F4A00BEA73A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C6FCB02A8E5F4A00BEA73A /* NetworkExtension.framework */; };
+		26C6FCB42A8E5F4A00BEA73A /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FCB32A8E5F4A00BEA73A /* PacketTunnelProvider.swift */; };
+		26C6FCB92A8E5F4A00BEA73A /* FuckingNE.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 26C6FCAE2A8E5F4A00BEA73A /* FuckingNE.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		26C6FCB72A8E5F4A00BEA73A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26C6FC8A2A8E5F0800BEA73A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26C6FCAD2A8E5F4A00BEA73A;
+			remoteInfo = FuckingNE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		26C6FCBD2A8E5F4A00BEA73A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				26C6FCB92A8E5F4A00BEA73A /* FuckingNE.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		26C6FC922A8E5F0800BEA73A /* FuckingVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckingVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +51,12 @@
 		26C6FC9E2A8E5F0900BEA73A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		26C6FCA12A8E5F0900BEA73A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26C6FCA32A8E5F0900BEA73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26C6FCA92A8E5F3500BEA73A /* FuckingVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckingVPN.entitlements; sourceTree = "<group>"; };
+		26C6FCAE2A8E5F4A00BEA73A /* FuckingNE.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FuckingNE.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		26C6FCB02A8E5F4A00BEA73A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		26C6FCB32A8E5F4A00BEA73A /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		26C6FCB52A8E5F4A00BEA73A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26C6FCB62A8E5F4A00BEA73A /* FuckingNE.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FuckingNE.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +67,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		26C6FCAB2A8E5F4A00BEA73A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26C6FCB12A8E5F4A00BEA73A /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -41,6 +82,8 @@
 			isa = PBXGroup;
 			children = (
 				26C6FC942A8E5F0800BEA73A /* FuckingVPN */,
+				26C6FCB22A8E5F4A00BEA73A /* FuckingNE */,
+				26C6FCAF2A8E5F4A00BEA73A /* Frameworks */,
 				26C6FC932A8E5F0800BEA73A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -49,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				26C6FC922A8E5F0800BEA73A /* FuckingVPN.app */,
+				26C6FCAE2A8E5F4A00BEA73A /* FuckingNE.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,6 +100,7 @@
 		26C6FC942A8E5F0800BEA73A /* FuckingVPN */ = {
 			isa = PBXGroup;
 			children = (
+				26C6FCA92A8E5F3500BEA73A /* FuckingVPN.entitlements */,
 				26C6FC952A8E5F0800BEA73A /* AppDelegate.swift */,
 				26C6FC972A8E5F0800BEA73A /* SceneDelegate.swift */,
 				26C6FC992A8E5F0800BEA73A /* ViewController.swift */,
@@ -65,6 +110,24 @@
 				26C6FCA32A8E5F0900BEA73A /* Info.plist */,
 			);
 			path = FuckingVPN;
+			sourceTree = "<group>";
+		};
+		26C6FCAF2A8E5F4A00BEA73A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26C6FCB02A8E5F4A00BEA73A /* NetworkExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		26C6FCB22A8E5F4A00BEA73A /* FuckingNE */ = {
+			isa = PBXGroup;
+			children = (
+				26C6FCB32A8E5F4A00BEA73A /* PacketTunnelProvider.swift */,
+				26C6FCB52A8E5F4A00BEA73A /* Info.plist */,
+				26C6FCB62A8E5F4A00BEA73A /* FuckingNE.entitlements */,
+			);
+			path = FuckingNE;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,15 +140,34 @@
 				26C6FC8E2A8E5F0800BEA73A /* Sources */,
 				26C6FC8F2A8E5F0800BEA73A /* Frameworks */,
 				26C6FC902A8E5F0800BEA73A /* Resources */,
+				26C6FCBD2A8E5F4A00BEA73A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				26C6FCB82A8E5F4A00BEA73A /* PBXTargetDependency */,
 			);
 			name = FuckingVPN;
 			productName = FuckingVPN;
 			productReference = 26C6FC922A8E5F0800BEA73A /* FuckingVPN.app */;
 			productType = "com.apple.product-type.application";
+		};
+		26C6FCAD2A8E5F4A00BEA73A /* FuckingNE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26C6FCBA2A8E5F4A00BEA73A /* Build configuration list for PBXNativeTarget "FuckingNE" */;
+			buildPhases = (
+				26C6FCAA2A8E5F4A00BEA73A /* Sources */,
+				26C6FCAB2A8E5F4A00BEA73A /* Frameworks */,
+				26C6FCAC2A8E5F4A00BEA73A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FuckingNE;
+			productName = FuckingNE;
+			productReference = 26C6FCAE2A8E5F4A00BEA73A /* FuckingNE.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -98,6 +180,9 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					26C6FC912A8E5F0800BEA73A = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					26C6FCAD2A8E5F4A00BEA73A = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
@@ -116,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				26C6FC912A8E5F0800BEA73A /* FuckingVPN */,
+				26C6FCAD2A8E5F4A00BEA73A /* FuckingNE */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +214,13 @@
 				26C6FCA22A8E5F0900BEA73A /* LaunchScreen.storyboard in Resources */,
 				26C6FC9F2A8E5F0900BEA73A /* Assets.xcassets in Resources */,
 				26C6FC9D2A8E5F0800BEA73A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26C6FCAC2A8E5F4A00BEA73A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,7 +237,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		26C6FCAA2A8E5F4A00BEA73A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26C6FCB42A8E5F4A00BEA73A /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		26C6FCB82A8E5F4A00BEA73A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26C6FCAD2A8E5F4A00BEA73A /* FuckingNE */;
+			targetProxy = 26C6FCB72A8E5F4A00BEA73A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		26C6FC9B2A8E5F0800BEA73A /* Main.storyboard */ = {
@@ -283,8 +392,10 @@
 		26C6FCA72A8E5F0900BEA73A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FuckingVPN/FuckingVPN.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9875BH6JL2;
@@ -302,6 +413,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kanevsky.Beast-VPN.FuckingVPN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,8 +425,10 @@
 		26C6FCA82A8E5F0900BEA73A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FuckingVPN/FuckingVPN.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9875BH6JL2;
@@ -330,6 +446,61 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "kanevsky.Beast-VPN.FuckingVPN";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		26C6FCBB2A8E5F4A00BEA73A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FuckingNE/FuckingNE.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9875BH6JL2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuckingNE/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FuckingNE;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kanevsky.Beast-VPN.FuckingVPN.FuckingNE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		26C6FCBC2A8E5F4A00BEA73A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = FuckingNE/FuckingNE.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9875BH6JL2;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FuckingNE/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FuckingNE;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kanevsky.Beast-VPN.FuckingVPN.FuckingNE";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -353,6 +524,15 @@
 			buildConfigurations = (
 				26C6FCA72A8E5F0900BEA73A /* Debug */,
 				26C6FCA82A8E5F0900BEA73A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		26C6FCBA2A8E5F4A00BEA73A /* Build configuration list for PBXNativeTarget "FuckingNE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26C6FCBB2A8E5F4A00BEA73A /* Debug */,
+				26C6FCBC2A8E5F4A00BEA73A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
