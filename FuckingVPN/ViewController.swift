@@ -30,17 +30,18 @@ class ViewController: UIViewController {
         }
 
         func configureVPN(serverAddress: String, username: String, password: String) {
+            
           providerManager?.loadFromPreferences { error in
              if error == nil {
                 let tunnelProtocol = NETunnelProviderProtocol()
                  
-                 let configData = tunnelProtocol.providerConfiguration
+//                 let configData = tunnelProtocol.providerConfiguration
                  
                  
                  
                 tunnelProtocol.username = username
                 tunnelProtocol.serverAddress = serverAddress
-                tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN"
+                tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN.FuckingNE"
                  tunnelProtocol.providerConfiguration = ["username": username, "password": password]
 //                tunnelProtocol.providerConfiguration = ["ovpn": "configData", "username": username, "password": password]
                 tunnelProtocol.disconnectOnSleep = false
@@ -49,13 +50,27 @@ class ViewController: UIViewController {
                 self.providerManager.isEnabled = true
                 self.providerManager.saveToPreferences(completionHandler: { (error) in
                       if error == nil  {
-                         self.providerManager.loadFromPreferences(completionHandler: { (error) in
-                             do {
-                               try self.providerManager.connection.startVPNTunnel()
-                             } catch let error {
-                                 print(error.localizedDescription)
-                             }
-                         })
+                          self.providerManager.loadFromPreferences(completionHandler: { (error) in
+                              if error == nil {
+                                  do {
+                                      try self.providerManager.connection.startVPNTunnel()
+                                      print(self.providerManager.connection.status.rawValue)
+                                  } catch let error {
+                                      print(error.localizedDescription)
+                                  }
+                              }else {
+                                  print(error!.localizedDescription)
+                              }
+                          })
+                          print(self.providerManager.connection.status.rawValue)
+//                         self.providerManager.loadFromPreferences(completionHandler: { (error) in
+//                             do {
+////                               try self.providerManager.connection.startVPNTunnel()
+//                                 try self.providerManager
+//                             } catch let error {
+//                                 print(error.localizedDescription)
+//                             }
+//                         })
                       }
                 })
               }
