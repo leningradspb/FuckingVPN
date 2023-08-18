@@ -1,6 +1,6 @@
 {
   "name": "OpenVPNAdapter",
-  "version": "0.8.0",
+  "version": "0.4.0",
   "summary": "Objective-C wrapper for OpenVPN library. Compatible with iOS and macOS.",
   "description": "OpenVPNAdapter is an Objective-C framework that allows to easily configure and establish VPN connection using OpenVPN protocol.\nIt is based on the original openvpn3 library so it has every feature the library has. The framework is designed to use in conjunction\nwith NetworkExtension framework and doesn't use any private Apple API. Compatible with iOS and macOS and also Swift friendly.",
   "homepage": "https://github.com/ss-abramchuk/OpenVPNAdapter",
@@ -14,8 +14,21 @@
   },
   "source": {
     "git": "https://github.com/ss-abramchuk/OpenVPNAdapter.git",
-    "tag": "0.8.0"
+    "tag": "0.4.0"
   },
+  "source_files": "Sources/OpenVPNAdapter/*.{h,m,mm}",
+  "public_header_files": "Sources/OpenVPNAdapter/*.h",
+  "private_header_files": [
+    "Sources/OpenVPNAdapter/*+Internal.h",
+    "Sources/OpenVPNAdapter/OpenVPNReachabilityTracker.h",
+    "Sources/OpenVPNAdapter/OpenVPNClient.h",
+    "Sources/OpenVPNAdapter/OpenVPNNetworkSettingsBuilder.h",
+    "Sources/OpenVPNAdapter/OpenVPNPacket.h",
+    "Sources/OpenVPNAdapter/OpenVPNPacketFlowBridge.h",
+    "Sources/OpenVPNAdapter/NSError+OpenVPNError.h",
+    "Sources/OpenVPNAdapter/NSArray+OpenVPNAdditions.h"
+  ],
+  "module_map": "Configuration/OpenVPNAdapter.modulemap",
   "ios": {
     "frameworks": [
       "Foundation",
@@ -31,6 +44,12 @@
       "SystemConfiguration"
     ]
   },
+  "libraries": [
+    "lz4",
+    "mbedcrypto",
+    "mbedtls",
+    "mbedx509"
+  ],
   "requires_arc": true,
   "prefix_header_file": false,
   "xcconfig": {
@@ -38,68 +57,64 @@
     "CLANG_CXX_LANGUAGE_STANDARD": "gnu++14",
     "CLANG_CXX_LIBRARY": "libc++",
     "GCC_WARN_64_TO_32_BIT_CONVERSION": "NO",
-    "CLANG_WARN_DOCUMENTATION_COMMENTS": "NO",
-    "HEADER_SEARCH_PATHS": "\"${PODS_TARGET_SRCROOT}/Sources/ASIO/asio/include/**\" \"${PODS_TARGET_SRCROOT}/Sources/mbedTLS/include/**\" \"${PODS_TARGET_SRCROOT}/Sources/OpenVPN3/**\""
+    "CLANG_WARN_DOCUMENTATION_COMMENTS": "NO"
   },
   "subspecs": [
     {
-      "name": "OpenVPNAdapter",
-      "source_files": [
-        "Sources/OpenVPNAdapter/library/*.{h,m,mm}",
-        "Sources/OpenVPNAdapter/include/*.h"
-      ],
-      "public_header_files": "Sources/OpenVPNAdapter/include/*.h",
-      "compiler_flags": "-DUSE_ASIO"
+      "name": "lz4",
+      "preserve_paths": "Sources/OpenVPNAdapter/Libraries/Vendors/lz4/include/*.h",
+      "ios": {
+        "vendored_libraries": [
+          "Sources/OpenVPNAdapter/Libraries/Vendors/lz4/lib/ios/liblz4.a"
+        ]
+      },
+      "osx": {
+        "vendored_libraries": [
+          "Sources/OpenVPNAdapter/Libraries/Vendors/lz4/lib/macos/liblz4.a"
+        ]
+      },
+      "xcconfig": {
+        "HEADER_SEARCH_PATHS": "${PODS_TARGET_SRCROOT}/Sources/OpenVPNAdapter/Libraries/Vendors/lz4/include/**"
+      }
     },
     {
-      "name": "ASIO",
-      "preserve_paths": "Sources/ASIO/asio/include/**/*.{hpp,ipp}"
+      "name": "mbedtls",
+      "preserve_paths": "Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/include/**/*.h",
+      "ios": {
+        "vendored_libraries": [
+          "Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/lib/ios/libmbedcrypto.a",
+          "Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/lib/ios/libmbedtls.a",
+          "Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/lib/ios/libmbedx509.a"
+        ]
+      },
+      "osx": {
+        "vendored_libraries": [
+          "Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/lib/macos/libmbedcrypto.a",
+          "Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/lib/macos/libmbedtls.a",
+          "Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/lib/macos/libmbedx509.a"
+        ]
+      },
+      "xcconfig": {
+        "HEADER_SEARCH_PATHS": "${PODS_TARGET_SRCROOT}/Sources/OpenVPNAdapter/Libraries/Vendors/mbedtls/include/**"
+      }
     },
     {
-      "name": "LZ4",
-      "private_header_files": "Sources/LZ4/lib/*.{h,c}",
-      "source_files": [
-        "Sources/LZ4/lib/*.{h,c}",
-        "Sources/LZ4/lib/*.{h,c}"
-      ],
-      "compiler_flags": "-DXXH_NAMESPACE=LZ4_"
+      "name": "asio",
+      "preserve_paths": "Sources/OpenVPNAdapter/Libraries/Vendors/asio/asio/include/**/*.{hpp,ipp}",
+      "xcconfig": {
+        "HEADER_SEARCH_PATHS": "${PODS_TARGET_SRCROOT}/Sources/OpenVPNAdapter/Libraries/Vendors/asio/asio/include/**"
+      }
     },
     {
-      "name": "mbedTLS",
-      "source_files": "Sources/mbedTLS/library/*.{c}",
-      "preserve_paths": "Sources/mbedTLS/include/**/*.{h}",
-      "compiler_flags": [
-        "-DMBEDTLS_MD4_C",
-        "-DMBEDTLS_RELAXED_X509_DATE",
-        "-D_FILE_OFFSET_BITS=64"
-      ]
-    },
-    {
-      "name": "OpenVPN3",
-      "preserve_paths": [
-        "Sources/OpenVPN3/openvpn/**/*.hpp",
-        "Sources/OpenVPN3/client/*.{hpp,cpp}"
-      ]
-    },
-    {
-      "name": "OpenVPNClient",
-      "source_files": [
-        "Sources/OpenVPNClient/library/*.{mm}",
-        "Sources/OpenVPNClient/include/*.{hpp}"
-      ],
-      "private_header_files": "Sources/OpenVPNClient/include/*.{hpp}",
-      "compiler_flags": [
-        "-x objective-c++",
-        "-DUSE_ASIO",
-        "-DUSE_ASIO_THREADLOCAL",
-        "-DASIO_STANDALONE",
-        "-DASIO_NO_DEPRECATED",
-        "-DASIO_HAS_STD_STRING_VIEW",
-        "-DHAVE_LZ4",
-        "-DUSE_MBEDTLS",
-        "-DOPENVPN_FORCE_TUN_NULL",
-        "-DUSE_TUN_BUILDER"
-      ]
+      "name": "openvpn",
+      "source_files": "Sources/OpenVPNAdapter/Libraries/Vendors/openvpn/client/*.{hpp,cpp}",
+      "private_header_files": "Sources/OpenVPNAdapter/Libraries/Vendors/openvpn/client/*.hpp",
+      "preserve_paths": "Sources/OpenVPNAdapter/Libraries/Vendors/openvpn/openvpn/**/*.hpp",
+      "compiler_flags": "-x objective-c++",
+      "xcconfig": {
+        "HEADER_SEARCH_PATHS": "${PODS_TARGET_SRCROOT}/Sources/OpenVPNAdapter/Libraries/Vendors/openvpn/**",
+        "OTHER_CPLUSPLUSFLAGS": "$(OTHER_CFLAGS) -DUSE_ASIO -DUSE_ASIO_THREADLOCAL -DASIO_STANDALONE -DASIO_NO_DEPRECATED -DASIO_HAS_STD_STRING_VIEW -DHAVE_LZ4 -DUSE_MBEDTLS -DOPENVPN_FORCE_TUN_NULL -DUSE_TUN_BUILDER"
+      }
     }
   ]
 }

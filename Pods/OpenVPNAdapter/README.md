@@ -3,10 +3,8 @@
 ![Platforms](https://img.shields.io/badge/Platforms-iOS%20%7C%20macOS-lightgrey.svg)
 ![iOS Versions](https://img.shields.io/badge/iOS-9.0+-yellow.svg)
 ![macOS Versions](https://img.shields.io/badge/macOS-10.11+-yellow.svg)
-![Xcode Version](https://img.shields.io/badge/Xcode-11.0+-yellow.svg)
+![Xcode Version](https://img.shields.io/badge/Xcode-9.0+-yellow.svg)
 ![Carthage Compatible](https://img.shields.io/badge/Carthage-Compatible-4BC51D.svg?style=flat)
-![Cocoapods Compatible](https://img.shields.io/badge/Cocoapods-Compatible-4BC51D.svg?style=flat)
-![Swift Package Manager Compatible](https://img.shields.io/badge/Swift%20Package%20Manager-Compatible-4BC51D.svg?style=flat)
 ![License](https://img.shields.io/badge/License-AGPLv3-lightgrey.svg)
 
 ## Overview
@@ -18,7 +16,7 @@ The framework is designed to use in conjunction with [`NetworkExtension`](https:
 
 ### Requirements
 - iOS 9.0+ or macOS 10.11+
-- Xcode 11.0+
+- Xcode 9.0+
 
 ### Carthage
 To install OpenVPNAdapter with Carthage, add the following line to your `Cartfile`.
@@ -35,14 +33,11 @@ To install OpenVPNAdapter with Cocoapods, add the following lines to your `Podfi
 ```ruby
 target 'Your Target Name' do
   use_frameworks!
-  pod 'OpenVPNAdapter', :git => 'https://github.com/ss-abramchuk/OpenVPNAdapter.git', :tag => '0.8.0'
+  pod 'OpenVPNAdapter', :git => 'https://github.com/ss-abramchuk/OpenVPNAdapter.git', :tag => '0.4.0'
 end
 ```
 
 And run `$ pod install`.
-
-### Swift Package Manager
-Add `OpenVPNAdapter` package to your project using File > Swift Packages > Add Package Dependency menu. Xcode 11 will automatically retrieve all necessary dependencies. In addition to that you need to add `SystemConfiguration` framework to the Frameworks and Libraries. If you work on iOS project add `UIKit` as well.
 
 ## Usage
 At first, you need to add a Packet Tunnel Provider extension to the project and configure provision profiles for both the container app and the extension. There are official documentation and many tutorials describing how to do it so we won't dwell on this in detail.
@@ -141,11 +136,6 @@ Packet Tunnel Provider extension uses [`NEPacketTunnelProvider`](https://develop
 import NetworkExtension
 import OpenVPNAdapter
 
-// Extend NEPacketTunnelFlow to adopt OpenVPNAdapterPacketFlow protocol so that
-// `self.packetFlow` could be sent to `completionHandler` callback of OpenVPNAdapterDelegate
-// method openVPNAdapter(openVPNAdapter:configureTunnelWithNetworkSettings:completionHandler).
-extension NEPacketTunnelFlow: OpenVPNAdapterPacketFlow {}
-
 class PacketTunnelProvider: NEPacketTunnelProvider {
 
     lazy var vpnAdapter: OpenVPNAdapter = {
@@ -160,10 +150,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     var startHandler: ((Error?) -> Void)?
     var stopHandler: (() -> Void)?
 
-    override func startTunnel(
-        options: [String : NSObject]?, 
-        completionHandler: @escaping (Error?) -> Void
-    ) {
+    override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         // There are many ways to provide OpenVPN settings to the tunnel provider. For instance,
         // you can use `options` argument of `startTunnel(options:completionHandler:)` method or get
         // settings from `protocolConfiguration.providerConfiguration` property of `NEPacketTunnelProvider`
@@ -190,20 +177,20 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             // Additional parameters as key:value pairs may be provided here
         ]
 
-        // Uncomment this line if you want to keep TUN interface active during pauses or reconnections
-        // configuration.tunPersist = true
+        // Add this line if you want to keep TUN interface active during pauses or reconnections
+        configuration.tunPersist = true
 
         // Apply OpenVPN configuration
-        let evaluation: OpenVPNConfigurationEvaluation
+        let properties: OpenVPNProperties
         do {
-            evaluation = try vpnAdapter.apply(configuration: configuration)
+            properties = try vpnAdapter.apply(configuration: configuration)
         } catch {
             completionHandler(error)
             return
         }
 
         // Provide credentials if needed
-        if !evaluation.autologin {
+        if !properties.autologin {
             // If your VPN configuration requires user credentials you can provide them by
             // `protocolConfiguration.username` and `protocolConfiguration.passwordReference`
             // properties. It is recommended to use persistent keychain reference to a keychain
@@ -234,19 +221,16 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         // WiFi the adapter still uses cellular data. Changing reachability forces
         // reconnection so the adapter will use actual connection.
         vpnReachability.startTracking { [weak self] status in
-            guard status == .reachableViaWiFi else { return }
+            guard status != .notReachable else { return }
             self?.vpnAdapter.reconnect(interval: 5)
         }
 
         // Establish connection and wait for .connected event
         startHandler = completionHandler
-        vpnAdapter.connect(using: packetFlow)
+        vpnAdapter.connect()
     }
 
-    override func stopTunnel(
-        with reason: NEProviderStopReason, 
-        completionHandler: @escaping () -> Void
-    ) {
+    override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         stopHandler = completionHandler
 
         if vpnReachability.isTracking {
@@ -266,25 +250,19 @@ extension PacketTunnelProvider: OpenVPNAdapterDelegate {
     // `OpenVPNAdapterPacketFlow` method signatures are similar to `NEPacketTunnelFlow` so
     // you can just extend that class to adopt `OpenVPNAdapterPacketFlow` protocol and
     // send `self.packetFlow` to `completionHandler` callback.
-    func openVPNAdapter(
-        _ openVPNAdapter: OpenVPNAdapter, 
-        configureTunnelWithNetworkSettings networkSettings: NEPacketTunnelNetworkSettings?, 
-        completionHandler: @escaping (Error?) -> Void
-    ) {
+    func openVPNAdapter(_ openVPNAdapter: OpenVPNAdapter, configureTunnelWithNetworkSettings networkSettings: NEPacketTunnelNetworkSettings?, completionHandler: @escaping (OpenVPNAdapterPacketFlow?) -> Void) {
         // In order to direct all DNS queries first to the VPN DNS servers before the primary DNS servers
         // send empty string to NEDNSSettings.matchDomains  
         networkSettings?.dnsSettings?.matchDomains = [""]
 
-        // Set the network settings for the current tunneling session.
-        setTunnelNetworkSettings(networkSettings, completionHandler: completionHandler)
+        // Specify the network settings for the current tunneling session.
+        setTunnelNetworkSettings(settings) { (error) in
+            completionHandler(error == nil ? self.packetFlow : nil)
+        }
     }
 
     // Process events returned by the OpenVPN library
-    func openVPNAdapter(
-        _ openVPNAdapter: OpenVPNAdapter, 
-        handleEvent event: 
-        OpenVPNAdapterEvent, message: String?
-    ) {
+    func openVPNAdapter(_ openVPNAdapter: OpenVPNAdapter, handleEvent event: OpenVPNAdapterEvent, message: String?) {
         switch event {
         case .connected:
             if reasserting {
@@ -317,8 +295,9 @@ extension PacketTunnelProvider: OpenVPNAdapterDelegate {
     // Handle errors thrown by the OpenVPN library
     func openVPNAdapter(_ openVPNAdapter: OpenVPNAdapter, handleError error: Error) {
         // Handle only fatal errors
-        guard let fatal = (error as NSError).userInfo[OpenVPNAdapterErrorFatalKey] as? Bool, 
-              fatal == true else { return }
+        guard let fatal = (error as NSError).userInfo[OpenVPNAdapterErrorFatalKey] as? Bool, fatal == true else {
+            return
+        }
 
         if vpnReachability.isTracking {
             vpnReachability.stopTracking()
@@ -338,6 +317,11 @@ extension PacketTunnelProvider: OpenVPNAdapterDelegate {
     }
 
 }
+
+// Extend NEPacketTunnelFlow to adopt OpenVPNAdapterPacketFlow protocol so that
+// `self.packetFlow` could be sent to `completionHandler` callback of OpenVPNAdapterDelegate
+// method openVPNAdapter(openVPNAdapter:configureTunnelWithNetworkSettings:completionHandler).
+extension NEPacketTunnelFlow: OpenVPNAdapterPacketFlow {}
 ```
 
 ## Contributing
