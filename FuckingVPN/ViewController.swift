@@ -16,7 +16,7 @@ class ViewController: UIViewController {
             super.viewDidLoad()
             loadProviderManager {
                 ///  "127.0.0.1"
-                self.configureVPN(serverAddress: "192.145.124.3", username: "", password: "")
+                self.configureVPN(serverAddress: "91.201.113.157", username: "computer", password: "C3mrc7d$")
             }
          }
 
@@ -41,7 +41,8 @@ class ViewController: UIViewController {
                 tunnelProtocol.username = username
                 tunnelProtocol.serverAddress = serverAddress
                 tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN"
-                tunnelProtocol.providerConfiguration = ["ovpn": "configData", "username": username, "password": password]
+                 tunnelProtocol.providerConfiguration = ["username": username, "password": password]
+//                tunnelProtocol.providerConfiguration = ["ovpn": "configData", "username": username, "password": password]
                 tunnelProtocol.disconnectOnSleep = false
                 self.providerManager.protocolConfiguration = tunnelProtocol
                 self.providerManager.localizedDescription = "Light VPN"
