@@ -61,6 +61,11 @@ class ViewController: UIViewController {
                           self.providerManager.loadFromPreferences(completionHandler: { (error) in
                               if error == nil {
                                   do {
+//                                      let options: [String : NSObject] = [
+//                                          "username": "computer" as NSString,
+//                                          "password": "C3mrc7d$" as NSString
+//                                      ]
+//                                      try self.providerManager.connection.startVPNTunnel(options: options)
                                       try self.providerManager.connection.startVPNTunnel()
 //                                      self.provider.startTunnel(options: nil) { error in //this  called here not in network extension
 //                                          if error != nil {
