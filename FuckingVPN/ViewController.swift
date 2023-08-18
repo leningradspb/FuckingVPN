@@ -11,6 +11,7 @@ import NetworkExtension
 class ViewController: UIViewController {
 
     var providerManager: NETunnelProviderManager!
+//    let provider = PacketTunnelProvider()
 
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -30,7 +31,12 @@ class ViewController: UIViewController {
         }
 
         func configureVPN(serverAddress: String, username: String, password: String) {
-            
+//            guard
+//                          let configurationFileURL = Bundle.main.url(forResource: "config", withExtension: "ovpn"),
+//                          let configurationFileContent = try? Data(contentsOf: configurationFileURL)
+//                          else {
+//                              fatalError()
+//                      }
           providerManager?.loadFromPreferences { error in
              if error == nil {
                 let tunnelProtocol = NETunnelProviderProtocol()
@@ -41,12 +47,14 @@ class ViewController: UIViewController {
                  
                 tunnelProtocol.username = username
                 tunnelProtocol.serverAddress = serverAddress
-                tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN.FuckingNE"
+                 
+                 tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN"
+//                tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN.FuckingNE"
                  tunnelProtocol.providerConfiguration = ["username": username, "password": password]
-//                tunnelProtocol.providerConfiguration = ["ovpn": "configData", "username": username, "password": password]
+//                tunnelProtocol.providerConfiguration = ["ovpn": configurationFileContent, "username": username, "password": password]
                 tunnelProtocol.disconnectOnSleep = false
                 self.providerManager.protocolConfiguration = tunnelProtocol
-                self.providerManager.localizedDescription = "Light VPN"
+                self.providerManager.localizedDescription = "Govno VPN"
                 self.providerManager.isEnabled = true
                 self.providerManager.saveToPreferences(completionHandler: { (error) in
                       if error == nil  {
@@ -54,6 +62,13 @@ class ViewController: UIViewController {
                               if error == nil {
                                   do {
                                       try self.providerManager.connection.startVPNTunnel()
+//                                      self.provider.startTunnel(options: nil) { error in //this  called here not in network extension
+//                                          if error != nil {
+//                                              print(error!)
+//                                          }else {
+//                                              
+//                                          }
+//                                      }
                                       print(self.providerManager.connection.status.rawValue)
                                   } catch let error {
                                       print(error.localizedDescription)
