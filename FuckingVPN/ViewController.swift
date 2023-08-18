@@ -31,12 +31,12 @@ class ViewController: UIViewController {
         }
 
         func configureVPN(serverAddress: String, username: String, password: String) {
-//            guard
-//                          let configurationFileURL = Bundle.main.url(forResource: "config", withExtension: "ovpn"),
-//                          let configurationFileContent = try? Data(contentsOf: configurationFileURL)
-//                          else {
-//                              fatalError()
-//                      }
+            guard
+                          let configurationFileURL = Bundle.main.url(forResource: "profile-620092417153600603", withExtension: "ovpn"),
+                          let configurationFileContent = try? Data(contentsOf: configurationFileURL)
+                          else {
+                              fatalError()
+                      }
           providerManager?.loadFromPreferences { error in
              if error == nil {
                 let tunnelProtocol = NETunnelProviderProtocol()
@@ -48,10 +48,10 @@ class ViewController: UIViewController {
                 tunnelProtocol.username = username
                 tunnelProtocol.serverAddress = serverAddress
                  
-                 tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN"
-//                tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN.FuckingNE"
-                 tunnelProtocol.providerConfiguration = ["username": username, "password": password]
-//                tunnelProtocol.providerConfiguration = ["ovpn": configurationFileContent, "username": username, "password": password]
+//                 tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN"
+                tunnelProtocol.providerBundleIdentifier = "kanevsky.Beast-VPN.FuckingVPN.FuckingNE"
+//                 tunnelProtocol.providerConfiguration = ["username": username, "password": password]
+                tunnelProtocol.providerConfiguration = ["ovpn": configurationFileContent, "username": username, "password": password]
                 tunnelProtocol.disconnectOnSleep = false
                 self.providerManager.protocolConfiguration = tunnelProtocol
                 self.providerManager.localizedDescription = "Govno VPN"

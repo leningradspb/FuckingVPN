@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F2962AB068D8DBA68D30D68 /* Pods_FuckingVPN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09FEE4729E6F0FC49119A35F /* Pods_FuckingVPN.framework */; };
+		266DB2A02A8F5CCE00B11236 /* profile-620092417153600603.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = 266DB29F2A8F5CCE00B11236 /* profile-620092417153600603.ovpn */; };
 		26C6FC962A8E5F0800BEA73A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FC952A8E5F0800BEA73A /* AppDelegate.swift */; };
 		26C6FC982A8E5F0800BEA73A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FC972A8E5F0800BEA73A /* SceneDelegate.swift */; };
 		26C6FC9A2A8E5F0800BEA73A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C6FC992A8E5F0800BEA73A /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 
 /* Begin PBXFileReference section */
 		09FEE4729E6F0FC49119A35F /* Pods_FuckingVPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FuckingVPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		266DB29F2A8F5CCE00B11236 /* profile-620092417153600603.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "profile-620092417153600603.ovpn"; sourceTree = "<group>"; };
 		26C6FC922A8E5F0800BEA73A /* FuckingVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FuckingVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C6FC952A8E5F0800BEA73A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26C6FC972A8E5F0800BEA73A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				26C6FC9E2A8E5F0900BEA73A /* Assets.xcassets */,
 				26C6FCA02A8E5F0900BEA73A /* LaunchScreen.storyboard */,
 				26C6FCA32A8E5F0900BEA73A /* Info.plist */,
+				266DB29F2A8F5CCE00B11236 /* profile-620092417153600603.ovpn */,
 			);
 			path = FuckingVPN;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26C6FCA22A8E5F0900BEA73A /* LaunchScreen.storyboard in Resources */,
+				266DB2A02A8F5CCE00B11236 /* profile-620092417153600603.ovpn in Resources */,
 				26C6FC9F2A8E5F0900BEA73A /* Assets.xcassets in Resources */,
 				26C6FC9D2A8E5F0800BEA73A /* Main.storyboard in Resources */,
 			);
